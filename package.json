@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "time-convert-raycast-plugin",
-  "title": "time-convert-raycast-plugin",
-  "description": "for time convert",
+  "title": "Time Convert",
+  "description": "Parse and convert many time formats to multiple time zones",
   "icon": "extension-icon.png",
   "author": "niudear",
   "platforms": [
@@ -16,9 +16,25 @@
   "commands": [
     {
       "name": "time",
-      "title": "time",
-      "description": "convert time",
-      "mode": "view"
+      "title": "Convert Time",
+      "description": "Parse timestamps and date strings, then convert to target time zones",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "defaultInputZone",
+          "type": "textfield",
+          "title": "Default Input Zone",
+          "description": "Used when the input has no timezone suffix. Examples: Local, UTC, GMT-7, Asia/Shanghai",
+          "required": false
+        },
+        {
+          "name": "outputZones",
+          "type": "textfield",
+          "title": "Output Zones",
+          "description": "Comma-separated zones to render. Examples: UTC,America/Los_Angeles,Asia/Shanghai",
+          "required": false
+        }
+      ]
     }
   ],
   "dependencies": {
