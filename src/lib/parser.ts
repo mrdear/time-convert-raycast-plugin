@@ -650,7 +650,7 @@ export function parseDateInput(rawInput: string, defaultSourceZone: ZoneSpec): P
       input,
       sourceZone,
       sourceZoneLabel: zoneDisplayName(sourceZone),
-      error: "请输入时间内容，例如: now 或 2019-01-30 21:24:44,gmt-7",
+      error: "Please enter a time value, e.g. now or 2019-01-30 21:24:44,gmt-7",
     };
   }
 
