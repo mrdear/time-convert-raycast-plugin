@@ -24,7 +24,7 @@ function UsageExamples() {
           key={example}
           icon={Icon.Text}
           title={example}
-          subtitle="输入后会实时解析"
+          subtitle="Parses in real time"
           actions={
             <ActionPanel>
               <Action.CopyToClipboard title="Copy Example" content={example} />
@@ -61,7 +61,7 @@ export default function Command() {
     <List
       isShowingDetail={false}
       throttle
-      searchBarPlaceholder="输入时间，例如 now / 1548854618000 / 2019-01-30 21:24:44,gmt-7"
+      searchBarPlaceholder="Enter time, e.g. now / 1548854618000 / 2019-01-30 21:24:44,gmt-7"
       onSearchTextChange={setSearchText}
     >
       {!hasInput && <UsageExamples />}
@@ -70,7 +70,7 @@ export default function Command() {
         <List.Section title="Parse Error">
           <List.Item
             icon={Icon.XMarkCircle}
-            title="无法解析该格式"
+            title="Unable to parse this format"
             subtitle={parseResult.error}
             accessories={[{ text: `source: ${parseResult.sourceZoneLabel}` }]}
             actions={
