@@ -56,6 +56,12 @@
 2. 输入任意时间文本。
 3. 通过 `↵` 进入 Action，复制时间戳或某个时区的格式化结果。
 
+## Screenshots
+
+![Plugin Input](images/plugin-input.png)
+
+![Plugin Detail](images/plugin-detail.png)
+
 ## 本地开发
 
 ```bash
