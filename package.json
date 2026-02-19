@@ -1,9 +1,9 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "time-convert-raycast-plugin",
-  "title": "Time Convert",
+  "title": "TimeZone Convert",
   "description": "Parse and convert many time formats to multiple time zones",
-  "icon": "extension-icon.png",
+  "icon": "icon.png",
   "author": "niudear",
   "platforms": [
     "macOS",
@@ -16,7 +16,7 @@
   "commands": [
     {
       "name": "time",
-      "title": "Convert Time",
+      "title": "Convert Zone Time",
       "description": "Parse timestamps and date strings, then convert to target time zones",
       "mode": "view",
       "preferences": [

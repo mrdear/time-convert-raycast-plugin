@@ -1,21 +1,21 @@
 # Time Convert (Raycast)
 
-一个将 `time-format-alfred`（Go）迁移到 Raycast 的 TypeScript 扩展。
+A TypeScript Raycast extension migrated from `time-format-alfred` (Go).
 
-它的目标是：输入任意常见时间文本，快速解析成时间戳，并按多个时区输出格式化结果。
+Its goal is simple: enter common time text, parse it quickly into a timestamp, and output formatted results across multiple time zones.
 
-## 功能概览
+## Feature Overview
 
-- 多格式时间解析（保留原 Alfred 版本的“状态机分流 + 多模式匹配”思路）
-- 支持时间戳输入：秒 / 毫秒 / 微秒 / 纳秒
-- 支持相对时间：`now`、`1 minutes ago`、`2 hours ago`、`1 day ago`
-- 支持中英文常见日期格式
-- 支持在输入末尾指定“源时区”
-- 输出：
-  - `TimeStamp`（毫秒）
-  - 多时区时间字符串：`YYYY-MM-DDTHH:mm:ss ±HH:mm ZONE`
+- Multi-format time parsing (keeps the original Alfred strategy: state-machine routing + multi-pattern matching)
+- Supports timestamp input in seconds / milliseconds / microseconds / nanoseconds
+- Supports relative time: `now`, `1 minutes ago`, `2 hours ago`, `1 day ago`
+- Supports common Chinese and English date formats
+- Supports specifying the source time zone at the end of the input
+- Output:
+  - `TimeStamp` (milliseconds)
+  - Multi-zone time string: `YYYY-MM-DDTHH:mm:ss ±HH:mm ZONE`
 
-## 常见输入示例
+## Common Input Examples
 
 - `now`
 - `1548854618`
@@ -27,49 +27,49 @@
 - `2024/01/12 8:30 PM`
 - `20060102150405`
 - `20060102`
-- `2006年01月02日 15:04`
+- `2006-01-02 15:04`
 - `12 Feb 2006, 19:17`
 - `May 8, 2009 5:57:51 PM`
 - `1 minutes ago`
 
-## 时区规则
+## Time Zone Rules
 
-1. 如果输入里自带时区（如 `+08:00` / `UTC` / `GMT` / IANA），按输入时区解析。
-2. 如果输入末尾使用逗号追加时区（如 `2019-01-30 21:24:44,gmt-7`），按该时区解析。
-3. 否则使用扩展配置里的 `Default Input Zone`。
-4. 解析成功后按 `Output Zones` + 本地时区输出结果。
+1. If the input includes a time zone (such as `+08:00`, `UTC`, `GMT`, or an IANA zone), it is parsed with that zone.
+2. If a zone is appended after a comma (for example, `2019-01-30 21:24:44,gmt-7`), that appended zone is used.
+3. Otherwise, the extension uses `Default Input Zone` from preferences.
+4. After parsing succeeds, results are rendered using `Output Zones` plus your local time zone.
 
-## 配置项
+## Preferences
 
-在 Raycast 命令 `Convert Time` 的 Preferences 中：
+In the `Convert Time` command preferences:
 
 - `Default Input Zone`
-  - 用于无时区输入的默认来源时区。
-  - 示例：`Local`、`UTC`、`GMT-7`、`Asia/Shanghai`
+  - Default source time zone for inputs without an explicit zone.
+  - Examples: `Local`, `UTC`, `GMT-7`, `Asia/Shanghai`
 - `Output Zones`
-  - 逗号分隔的输出时区列表。
-  - 示例：`UTC,America/Los_Angeles,Asia/Shanghai`
+  - Comma-separated list of output time zones.
+  - Example: `UTC,America/Los_Angeles,Asia/Shanghai`
 
-## 使用方式
+## Usage
 
-1. 在 Raycast 中运行 `Convert Time`。
-2. 输入任意时间文本。
-3. 通过 `↵` 进入 Action，复制时间戳或某个时区的格式化结果。
+1. Run `Convert Time` in Raycast.
+2. Enter any time text.
+3. Press `↵` to open Actions, then copy the timestamp or a formatted value in a specific zone.
 
 ## Screenshots
 
-![Plugin Input](images/plugin-input.png)
+![Plugin Input](media/plugin-input.png)
 
-![Plugin Detail](images/plugin-detail.png)
+![Plugin Detail](media/plugin-detail.png)
 
-## 本地开发
+## Local Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 说明
+## Notes
 
-- 当前实现优先覆盖 Alfred 版本的高频输入格式。
-- 如需补齐更冷门格式（例如某些 RFC 变体），可以继续扩展 `src/lib/parser.ts` 的匹配分支。
+- The current implementation prioritizes the most common formats from the Alfred version.
+- If you need additional edge formats (for example, specific RFC variants), extend the matching branches in `src/lib/parser.ts`.
